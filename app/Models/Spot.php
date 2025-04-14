@@ -28,4 +28,24 @@ class Spot extends Model
         return $this->belongsTo(related:Size::class);
     }
 
+    public function scopeFilter(Builder $query, array $filters)
+    {
+        $query->when(Arr::has(filters,['start','end'],function(Builder $query)use($filters)))
+        {
+            $query->whereDoesntHave(relation:'reservation',function(Builder $query)use($filters))
+            {
+                $start=Carbon::parse(Arr::get($filters,key:'start'));
+                $end=Carbon::parse(Arr::get($filters,key:'end'));
+
+                $query->whereBetween(column:'start',[$start,$end])
+                      ->orWhereBetween(column:'end',[$start,$end])
+                      ->orWhereRaw(sql:'?BETWEEN start and end',[$start])
+                      ->orWhereRaw(sql:'?BETWEEN start and end',[$end])
+
+
+            }
+        }
+    }
+    
+
 }
