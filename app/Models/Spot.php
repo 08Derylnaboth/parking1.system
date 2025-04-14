@@ -12,4 +12,20 @@ class Spot extends Model
 
     protected $guarded = ['id'];
 
+    public function spotAttributes():BelongsToMany{
+        return $this->belongsToMany(related:SpotAttribute::class);
+    }
+
+    public function garage():BelongsTo{
+        return $this->belongsTo(related:Garage::class);
+    }
+
+    public function reservations():HasMany{
+        return $this->hasMany(related:Reservation::class);
+    }
+
+    public function size():BelongsTo{
+        return $this->belongsTo(related:Size::class);
+    }
+
 }

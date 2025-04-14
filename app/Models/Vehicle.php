@@ -12,4 +12,12 @@ class Vehicle extends Model
 
     protected $guarded = ['id'];
 
+    public function user():BelongsTo{
+        return $this->belongsTo(related:User::class);
+    }
+
+    public function size():BelongsTo{
+        return $this->belongsTo(related:Size::class);
+    }
+
 }

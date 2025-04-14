@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(model:User::class)->index();
             $table->string(column:'licence',length:11);
+            $table->boolean(column:'free_entry')->default(value:false);
             $table->foreignIdFor(model:Size::class)->nullable();
             $table->timestamps();
         });

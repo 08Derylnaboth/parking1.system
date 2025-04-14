@@ -20,4 +20,12 @@ class Reservation extends Model
         'updated_at'
     ];
 
+    public function spot():BelongsTo{
+        return $this->belongsTo(related:Spot::class);
+    }
+
+    public function user():BelongsTo{
+        return $this->belongsTo(related:User::class);
+    }
+
 }
