@@ -21,5 +21,5 @@ require __DIR__.'/auth.php';
 
 
 Route::get('mike', function () {
-    return new GarageResourceCollection (Garage::get());
+    return new ReservationResource (Reservation::first());
 });

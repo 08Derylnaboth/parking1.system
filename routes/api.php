@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\GarageController;
+use App\Http\Controllers\SpotController;
 
 
 // Route::get('/user', function (Request $request) {
@@ -17,6 +20,10 @@ use App\Http\Controllers\UsersController;
 
 // Route::middleware(['auth:sanctum'])->group(function(){
 //     Route::get(url:'me',[UsersController::class,'me']);
+//     Route::post(url:'reservations',[ReservationController::class,'store']);
+//     Route::patch(url:'reservations/{reservation}',[ReservationController::class,'update']);
+//     Route::delete(url:'reservations/{reser}',[ReservationController::class,'destroy']);
+
 // });
 
 // Route::middleware(['internal'])->group(function(){

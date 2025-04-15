@@ -34,13 +34,17 @@ class Spot extends Model
         {
             $query->whereDoesntHave(relation:'reservation',function(Builder $query)use($filters))
             {
-                $start=Carbon::parse(Arr::get($filters,key:'start'));
-                $end=Carbon::parse(Arr::get($filters,key:'end'));
+                $query->where([
+                    'start','<',Carbon::parse(Arr::get($filters,key:'end'))
+                    'end','>',Carbon::parse(Arr::get($filters,key:'start'))
+                ]);
+                // $start=Carbon::parse(Arr::get($filters,key:'start'));
+                // $end=Carbon::parse(Arr::get($filters,key:'end'));
 
-                $query->whereBetween(column:'start',[$start,$end])
-                      ->orWhereBetween(column:'end',[$start,$end])
-                      ->orWhereRaw(sql:'?BETWEEN start and end',[$start])
-                      ->orWhereRaw(sql:'?BETWEEN start and end',[$end])
+                // $query->whereBetween(column:'start',[$start,$end])
+                //       ->orWhereBetween(column:'end',[$start,$end])
+                //       ->orWhereRaw(sql:'?BETWEEN start and end',[$start])
+                //       ->orWhereRaw(sql:'?BETWEEN start and end',[$end])
 
 
             }
