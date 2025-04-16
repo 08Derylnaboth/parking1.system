@@ -25,7 +25,16 @@ class ReservationCreateRequest extends FormRequest
             'start'=>['required','date','after_or_equal:now'],
             'end'=>['required','date','after:start'],
             'spot_id'=>['required'],
-
+            'range'=>[new ExistingReservationRuleForInterval($this->get(key:'spot_id'))],
         ];
+    }
+
+    protected function prepareForValidation(){
+        return $this->merge([
+            'range'=>[
+                'start'=>$this->get(key:'start'),
+                'end'=>$this->get(key:'end'),
+            ]
+            ]);
     }
 }

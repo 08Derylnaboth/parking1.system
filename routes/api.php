@@ -22,7 +22,8 @@ use App\Http\Controllers\SpotController;
 //     Route::get(url:'me',[UsersController::class,'me']);
 //     Route::post(url:'reservations',[ReservationController::class,'store']);
 //     Route::patch(url:'reservations/{reservation}',[ReservationController::class,'update']);
-//     Route::delete(url:'reservations/{reser}',[ReservationController::class,'destroy']);
+//     Route::delete(url:'reservations/{reservation}',[ReservationController::class,'destroy']);
+//     Route::post(url:'/calculate-payment',action:PaymentController::class);
 
 // });
 
